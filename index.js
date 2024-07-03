@@ -36,7 +36,7 @@ app.post('/submit', async (req, res) => {
     try {
         await newMessage.save();
         console.log(`Received message from ${name} (${email}): ${message}`);
-        res.send("Thank you for ur message")
+        res.sendFile(path.join(__dirname, 'public', 'response.html'))
     } catch (error) {
         console.error('Error saving message to the database:', error);
         res.status(500).json({ status: 'error', message: 'Failed to save your message. Please try again later.' });
